@@ -270,6 +270,9 @@ def SVGGetMaterial(color, context):
     if color.startswith('#'):
         color = color[1:]
 
+        if color in materials:
+            return materials[color]
+
         if len(color) == 3:
             color = color[0] * 2 + color[1] * 2 + color[2] * 2
 
@@ -1069,7 +1072,7 @@ class SVGGeometryContainer(SVGGeometry):
     Container of SVG geometries
     """
 
-    __slots__ = ('_geometries')  # List of chold geometries
+    __slots__ = ('_geometries')  # List of child geometries
 
     def __init__(self, node, context):
         """
